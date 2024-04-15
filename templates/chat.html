@@ -1,30 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="mui-panel">
+<script>
+    let times = []
+</script>
+<div class="mui-panel head-panel">
     <b>Room: {{ room }}</b> / {{ name }}
     <a href="/logout">Log Out</a>
 </div>
 <div>
-    <div class='mui-panel'>
-    {% for message in messages %}
-    <div class={{ 'right' if message[2] == name else 'left' }}>
-        <span id="message">
-            <b>{{ '' if message[2] == name else message[2] }}</b>
-            {{ message[3] }}
-            <sub class="time">{{ message[5] }} / {{ message[4] }}</sub>
-        </span>
-    </div>
-    {% endfor %}
+    <div class='mui-panel chat'>
+        {% for message in messages %}
+        <div class={{ 'right' if message[2] == name else 'left' }}>
+            <span class="user-name"><b>{{ 'Me' if message[2] == name else message[2] }}</b></span>
+            <span id="message">
+                {{ message[3] }}
+                <sub class="time">{{ date(message[4]) }}</sub>
+            </span>
+        </div>
+        {% endfor %}
     </div>
     <div style="height: 35px;"></div>
     <form id="new-message-panel" action="new" method="post">
-        <input id="text" name="text" placeholder="Написать сообщение..." required="true"/>
-        <button class="mui-btn mui-btn--fab mui-btn--primary" type="submit">+</button>
+        <input name="text" placeholder="Написать сообщение..." required="true"/>
+        <button type="submit">+</button>
     </form>
 </div>
 <script>
     setTimeout(() => {
         scroll(0,1000);
     }, 1)
+    document.getElementsByClassName('chat')[0].style.bottom = document.getElementById('new-message-panel').offsetHeight + 'px'
 </script>
 {% endblock %}

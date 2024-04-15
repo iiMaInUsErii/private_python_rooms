@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for, session
 import sqlite3
+import datetime
 import time
 
 app = Flask(__name__)
@@ -62,7 +63,7 @@ def chat():
         if cursor.fetchall()[0][2] == password:
             cursor.execute("SELECT * FROM messages WHERE room = ? ORDER BY id", [room])
             messages = cursor.fetchall()
-            return render_template("chat.html", name=name, messages=messages, room=room)
+            return render_template("chat.html", name=name, messages=messages, room=room, date=datetime.datetime.fromtimestamp)
         else:
             error = 'Invalid Password'
             return render_template("error.html", error=error)

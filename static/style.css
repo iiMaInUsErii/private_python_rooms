@@ -1,19 +1,19 @@
-.small {
-    font-size: 12px;
-    height: 29px;
-    padding: 0 8px;
+.chat {
+    width: 100%;
+    padding: 0;
     margin: 0;
 }
 
-#message {
-    display: inline-block;
-    text-align: justify;
-    padding: 10px 15px;
-    margin: 7px 0 0 0;
-    border: 1px solid;
-    border-radius: 20px;
-    max-width: 75vw;
-    overflow-wrap: break-word;
+.connect-panel {
+    width: calc(100% - 20px * 2);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.conteiner-index {
+    display: grid;
+    grid-template-columns: 1fr 2.65fr;
+    margin-bottom: .5rem;
 }
 
 .left {
@@ -24,16 +24,55 @@
     text-align: right;
 }
 
-#text {
-    width: 80%;
-    height: 33px;
+.user-name {
+    display: block;
+    font-size: small;
+    padding:  0 15px 0 15px;
+}
+
+#message {
+    display: inline-block;
+    text-align: justify;
+    padding: 10px 15px;
+    margin: 0 0 4.5px 0;
+    border: 1px solid;
+    border-radius: 18px;
+    max-width: 75vw;
+    overflow-wrap: break-word;
 }
 
 #new-message-panel {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
     width: 100%;
+    height: min-content;
     position: fixed;
     bottom: 0px;
     text-align: center;
+}
+
+#new-message-panel input {
+    height: 33px;
+}
+
+#new-message-panel button {
+    height: 39px;
+}
+
+body{
+    width: 100%;
+}
+
+form {
+    text-align: center;
+}
+
+form button {
+    width: 100%;
+}
+
+label {
+    text-align: right;
 }
 
 th {
